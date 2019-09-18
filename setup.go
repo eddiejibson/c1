@@ -2,7 +2,6 @@ package certdb
 
 import (
 	"github.com/caddyserver/caddy"
-	"github.com/caddyserver/caddy/caddyhttp/httpserver"
 )
 
 func init() {
