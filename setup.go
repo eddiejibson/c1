@@ -1,12 +1,11 @@
-package certdb
+package certdbb
 
 import (
 	"github.com/caddyserver/caddy"
-	"github.com/caddyserver/caddy/caddyhttp/httpserver"
 )
 
 func init() {
-	caddy.RegisterPlugin("certdb", caddy.Plugin{
+	caddy.RegisterPlugin("certdbb", caddy.Plugin{
 		ServerType: "http",
 		Action:     Setup,
 	})
@@ -15,4 +14,3 @@ func init() {
 func Setup(c *caddy.Controller) error {
 	return nil
 }
-
