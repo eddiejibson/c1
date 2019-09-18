@@ -1,11 +1,11 @@
-package certdbb
+package certdb
 
 import (
 	"github.com/caddyserver/caddy"
 )
 
 func init() {
-	caddy.RegisterPlugin("certdbb", caddy.Plugin{
+	caddy.RegisterPlugin("certdb", caddy.Plugin{
 		ServerType: "http",
 		Action:     Setup,
 	})
