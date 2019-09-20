@@ -29,13 +29,13 @@ var dbConn *mongo.Client
 
 //CertObtained - Called when a certificate for a domain has been obtained su
 func CertObtained(event caddy.EventName, info interface{}) error {
-	fmt.Println(info)
+	fmt.Printf("%v", info)
 	return nil
 }
 
 //CertFailed - guess what this does
 func CertFailed(event caddy.EventName, info interface{}) error {
-	fmt.Println(info)
+	fmt.Printf("%v", info)
 	return nil
 }
 
