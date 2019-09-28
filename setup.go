@@ -21,8 +21,8 @@ func init() {
 		ServerType: "http",
 		Action:     Setup,
 	})
-	caddy.RegisterEventHook("ondemandcertobtained", CertObtained)
-	caddy.RegisterEventHook("ondemandcertfailure", CertFailed)
+	caddy.RegisterEventHook("ondemandcertobtained", onDemandCertObtained)
+	caddy.RegisterEventHook("caddydb-cert-failure", onDemandCertFailure)
 }
 
 var dbConn *mongo.Client
