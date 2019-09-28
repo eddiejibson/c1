@@ -27,15 +27,33 @@ func init() {
 
 var dbConn *mongo.Client
 
-//CertObtained - Called when a certificate for a domain has been obtained su
-func CertObtained(event caddy.EventName, info interface{}) error {
-	fmt.Printf("obtained %+v\n\n", info)
+
+//OnDemandCertFailure Called when Caddy fails to obtain a certificate for a given host
+func onDemandCertFailure(eventType caddy.EventName, eventInfo interface{}) error {
+	if eventType != caddy.OnDemandCertFailureEvent {
+		// Only listen to the event we are interested in
+		return nil
+	}
+
+	// Interface containing data about a failed on demand certificate
+	type CertFailureData struct {
+		Name   string
+		Reason error
+	}
+
+	data := eventInfo.(CertFailureData)
+
+	fmt.Println("FAILED", data.Name, data.Reason)
 	return nil
 }
 
-//CertFailed - guess what this does
-func CertFailed(event caddy.EventName, info interface{}) error {
-	fmt.Printf("failed %+v\n\n", info)
+//OnDemandCertObtained Called when Caddy obtains a certificate for a given host
+func onDemandCertObtained(eventType caddy.EventName, eventInfo interface{}) error {
+	if eventType != caddy.OnDemandCertObtainedEvent {
+		// Only listen to the event we are interested in
+		return nil
+	}
+	fmt.Println("SUC", eventInfo.(string))
 	return nil
 }
 
